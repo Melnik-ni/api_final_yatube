@@ -6,15 +6,16 @@
 
 ## Стек технологий
 * Django Rest Framework  
-* Python 3.10  
-* Django 3.2.16  
+* Python  
+* Django
 * SQlite3
   
-В проекте используютя модели:  
-Post -  посты  
-Group - группы  
-Comment - комментарии для постов  
-Follow -  управление подписками  
+##Доступные возможности:
+
+Подписка на пользователей.
+Создание, просмотр, изменение и удаление постов.
+Создание, просмотр, изменение и удаление комментариев.
+Создание и просмотр групп. 
 
 Документация по проекту после запуска сервера доступна по адресу:  
 http://127.0.0.1:8000/redoc/  
@@ -25,27 +26,27 @@ http://127.0.0.1:8000/redoc/
 Клонировать репозиторий и перейти в него в командной строке:
 
 ```
-https://github.com/Mificus/api_final_yatube.git
+git clone git@github.com:Melnik-ni/api_final_yatube.git
 ```
 
 ```
-cd api_final)yatube
+cd api_final_yatube
 ```
 
 Cоздать и активировать виртуальное окружение:
 
 ```
-python3 -m venv env
+python -m venv env
 ```
 
 ```
-source env/bin/activate
+source venv/Scripts/activate
 ```
 
 Установить зависимости из файла requirements.txt:
 
 ```
-python3 -m pip install --upgrade pip
+python -m pip install --upgrade pip
 ```
 
 ```
@@ -55,13 +56,13 @@ pip install -r requirements.txt
 Выполнить миграции:
 
 ```
-python3 manage.py migrate
+python manage.py migrate
 ```
 
 Запустить проект:
 
 ```
-python3 manage.py runserver
+python manage.py runserver
 ```
 
 ### Пример запроса к API
