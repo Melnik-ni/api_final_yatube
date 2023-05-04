@@ -33,9 +33,10 @@ class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
     permission_classes = (OwnerOrReadOnly,)
 
-    def get_queryset(self):
-        post_id = self.kwargs.get('post_id')
-        return Comment.objects.filter(post_id=post_id)
+    def get_queryset(self): 
+        return get_object_or_404(
+            Post, pk=self.kwargs['post_id']
+        ).comments.all() 
 
     def perform_create(self, serializer):
         author = self.request.user
@@ -51,7 +52,9 @@ class FollowViewSet(viewsets.ModelViewSet):
     search_fields = ('following__username',)
 
     def get_queryset(self):
-        return Follow.objects.filter(user=self.request.user)
+        return Follow.objects.select_related(
+            'following'
+        ).filter(user=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
